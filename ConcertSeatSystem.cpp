@@ -39,25 +39,25 @@ public:
     }
 
     void displaySeats() {
-        cout << "\n🎭 Concert Seat Map (O = Available, X = Taken)\n";
-        cout << "   ";
-        for (int col = 0; col < cols; ++col)
-            cout << setw(3) << col;
-        cout << "\n";
+    cout << "\n🎭 Concert Seat Map (O = Available, X = Taken)\n";
+    cout << "   ";
+    for (int col = 0; col < cols; ++col)
+        cout << setw(3) << col;
+    cout << "\n";
 
-        for (int row = 0; row < rows; ++row) {
-            cout << setw(2) << row << " ";
-            for (int col = 0; col < cols; ++col) {
-                if (seats[row][col]) {
-                    string name = names[row][col];
-                    cout << "[" << (name.empty() ? "X" : name.substr(0, 1)) << "]";
-                } else {
-                    cout << "[O]";
-                }
+    for (int row = 0; row < rows; ++row) {
+        cout << setw(2) << row << " ";
+        for (int col = 0; col < cols; ++col) {
+            if (seats[row][col]) {
+                cout << "[\033[31mX\033[0m]"; // Red X
+            } else {
+                cout << "[O]";
             }
-            cout << "  ← " << getSeatTier(row) << "\n";
         }
+        cout << "  ← " << getSeatTier(row) << "\n";
     }
+}
+
 
     void buySeat() {
         int row, col;
